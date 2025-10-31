@@ -1,0 +1,4 @@
+# Ignore Angular build output
+dist/
+node_modules/
+*.log
