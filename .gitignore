@@ -1,4 +1,5 @@
-# Ignore Angular build output
-dist/
-node_modules/
+.angular
+dist
+node_modules
+.env
 *.log
