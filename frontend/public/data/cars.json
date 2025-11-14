@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "title": "BMW M4 Competition",
+    "description": "The perfect balance of speed and style — 510 hp built for both racetracks and city streets.",
+    "image": "images/1-bmw-m4.png",
+    "prices": [1450, 1300, 1100]
+  },
+  {
+    "id": 2,
+    "title": "BMW M5",
+    "description": "Business-class comfort with the soul of a racer — 600 hp and intelligent all-wheel drive.",
+    "image": "images/2-bmw-m5.png",
+    "prices": [1600, 1450, 1250]
+  },
+  {
+    "id": 3,
+    "title": "Lamborghini Huracan Spyder Green",
+    "description": "A symbol of speed and passion — 640 hp and an open top for unforgettable adventures.",
+    "image": "images/3-lambo-hur.png",
+    "prices": [3200, 2900, 2600]
+  },
+  {
+    "id": 4,
+    "title": "Ferrari F8 Spider",
+    "description": "A dream on wheels — 720 hp, F1 aerodynamics, and an open cockpit for true speed lovers.",
+    "image": "images/4-fer-f8.png",
+    "prices": [3500, 3200, 2900]
+  },
+  {
+    "id": 5,
+    "title": "Porsche 911 Targa 4S Yellow",
+    "description": "Elegant power in a vibrant color — 450 hp, all-wheel drive, and Targa’s iconic style.",
+    "image": "images/5-911.png",
+    "prices": [1800, 1650, 1450]
+  },
+  {
+    "id": 6,
+    "title": "Mercedes SL 55 AMG",
+    "description": "Classic roadster style — luxury, performance, and 469 hp for unforgettable drives.",
+    "image": "images/6-mersu-sl.png",
+    "prices": [1700, 1550, 1350]
+  },
+  {
+    "id": 7,
+    "title": "BMW Z4",
+    "description": "Compact convertible for stylish trips — agile, powerful, and beautifully designed.",
+    "image": "images/7-bmw-z4.png",
+    "prices": [1200, 1100, 950]
+  },
+  {
+    "id": 8,
+    "title": "Mercedes C180 Convertible",
+    "description": "A perfect choice for sunny days — light, comfortable, and elegant to drive.",
+    "image": "images/8-mersu-180.png",
+    "prices": [1000, 900, 800]
+  },
+  {
+    "id": 9,
+    "title": "Chevrolet Corvette Orange",
+    "description": "Bold, powerful, unforgettable — 495 hp wrapped in striking orange style.",
+    "image": "images/9-chevy-corv.png",
+    "prices": [1400, 1250, 1100]
+  },
+  {
+    "id": 10,
+    "title": "Audi R8 Blue",
+    "description": "A supercar for those in love with speed — 570 hp, AWD, and stunning design.",
+    "image": "images/10-audi-r8.png",
+    "prices": [2000, 1850, 1600]
+  },
+  {
+    "id": 11,
+    "title": "Chevrolet Corvette White",
+    "description": "Classic power in an elegant color — performance and style for true enthusiasts.",
+    "image": "images/11-chevy-corv.png",
+    "prices": [1350, 1200, 1000]
+  },
+  {
+    "id": 12,
+    "title": "Ford Mustang Convertible Black",
+    "description": "A living legend in open-top form — 450 hp, iconic design, and freedom on the road.",
+    "image": "images/12-ford-mus.png",
+    "prices": [1250, 1150, 1000]
+  }
+]

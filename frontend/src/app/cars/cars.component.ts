@@ -12,43 +12,19 @@ export class CarsComponent {
   http = inject(HttpClient);
   cars: any = [];
 
+  // Backend to save orders
+  private orderApiUrl = 'http://localhost:5050/order';
+
   carsFilter = [
-    {
-      active: true,
-      name: 'Все марки',
-    },
-    {
-      active: false,
-      name: 'Lamborghini',
-    },
-    {
-      active: false,
-      name: 'Ferrari',
-    },
-    {
-      active: false,
-      name: 'Porsche',
-    },
-    {
-      active: false,
-      name: 'BMW',
-    },
-    {
-      active: false,
-      name: 'Mercedes',
-    },
-    {
-      active: false,
-      name: 'Chevrolet',
-    },
-    {
-      active: false,
-      name: 'Audi',
-    },
-    {
-      active: false,
-      name: 'Ford',
-    },
+    { active: true, name: 'All cars' },
+    { active: false, name: 'Lamborghini' },
+    { active: false, name: 'Ferrari' },
+    { active: false, name: 'Porsche' },
+    { active: false, name: 'BMW' },
+    { active: false, name: 'Mercedes' },
+    { active: false, name: 'Chevrolet' },
+    { active: false, name: 'Audi' },
+    { active: false, name: 'Ford' },
   ];
 
   orderForm = new FormGroup({
@@ -58,20 +34,27 @@ export class CarsComponent {
   });
 
   ngOnInit() {
-    this.getCars("");
+    this.getCars('');
   }
 
   getCars(filter: string) {
-    this.http
-      .get('https://testologia.ru/cars-data', { params: { filter: filter } })
-      .subscribe((data) => (this.cars = data));
-  }
+  this.http.get<any[]>('/data/cars.json').subscribe({
+    next: (data) => {
+      if (filter && filter !== 'All cars') {
+        this.cars = data.filter(car =>
+          car.title.toLowerCase().includes(filter.toLowerCase())
+        );
+      } else {
+        this.cars = data;
+      }
+    },
+    error: (err) => console.error('Error loading cars:', err),
+  });
+}
 
   changeFilter(filter: any, carsContent: HTMLElement) {
     this.carsFilter.forEach((el) => (el.active = false));
     filter.active = true;
-
-    const filterText = filter.name.toLowerCase();
 
     this.getCars(filter.name);
 
@@ -86,16 +69,18 @@ export class CarsComponent {
   sendOrder() {
     if (this.orderForm.valid) {
       this.http
-        .post('https://testologia.ru/cars-order', this.orderForm.value)
+        .post(this.orderApiUrl, this.orderForm.value)
         .subscribe({
           next: (response: any) => {
-            alert(response.message);
+            alert(response.message || 'Your order has been submitted successfully');
             this.orderForm.reset();
           },
           error: (response: any) => {
-            alert(response.error.message);
+            alert(response.error?.message || 'Error submitting your order');
           },
         });
+    } else {
+      alert('Please fill out the form correctly before submitting.');
     }
   }
 }

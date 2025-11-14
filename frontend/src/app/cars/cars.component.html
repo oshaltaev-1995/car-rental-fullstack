@@ -7,27 +7,27 @@
       <nav class="menu">
         <ul>
           <li>
-            <a href="#cars">НАШ автопарк</a>
+            <a href="#cars">Our garage</a>
           </li>
           <li>
-            <a href="#order">Забронировать</a>
+            <a href="#order">Book</a>
           </li>
         </ul>
       </nav>
-      <a href="tel:+971523898989" class="phone">+971 52 389 89 89</a>
+      <a href="tel:+358449779493" class="phone">+358 44 977 94 93</a>
     </div>
   </header>
 
   <section class="main-content">
     <div class="container">
       <div class="main-info">
-        <h1>Покорите дороги за рулём легендарных автомобилей!</h1>
+        <h1>Conquer the road behind the wheel of legendary cars!</h1>
         <p>
-          От эксклюзивных спорткаров до гоночных шедевров — выбирайте мечту,
-          садитесь за руль и ощутите мощь премиального авто на полную!
+          From exclusive sports cars to racing masterpieces — choose your dream,
+          take the driver’s seat, and feel the full power of a premium vehicle!
         </p>
         <a href="#cars" class="button" id="main-action-button"
-          >Посмотреть автомобили</a
+          >View cars</a
         >
       </div>
       <img src="images/main-car.png" alt="Main car" class="main-image" />
@@ -39,7 +39,7 @@
 
 <section class="cars" id="cars">
   <div class="container">
-    <h2>Выберите автомобиль</h2>
+    <h2>Choose your car</h2>
     <div class="cars-content" id="cars-content" #carsContent>
       <aside class="cars-filter">
         <ul>
@@ -55,22 +55,22 @@
           <div class="car-details">
             <h4>{{ car.title }}</h4>
             <p>
-              {{ car.text }}
+              {{ car.description }}
             </p>
             <div class="car-action">
               <ul>
-                @for (period of ["на 1 сутки", "на 1-3 суток", "на 3+ суток"];
+                @for (period of ["1 day", "1-3 days", "3+ days"];
                 track $index) {
                 <li>
                   <div class="car-period">{{ period }}</div>
                   <div class="car-price">
                     {{ car.prices[$index] }} $ @if ($index > 0)
-                    {<span>/сут</span>}
+                    {<span>/day</span>}
                   </div>
                 </li>
                 }
               </ul>
-              <a href="#order" class="button white-button" (click)="this.orderForm.get('car')?.setValue(car.title)">Забронировать</a>
+              <a href="#order" class="button white-button" (click)="this.orderForm.get('car')?.setValue(car.title)">Book</a>
             </div>
           </div>
         </article>
@@ -84,17 +84,17 @@
   <div class="container">
     <img src="images/order-car.png" alt="Order car" />
     <form [formGroup]="orderForm">
-      <h3>Забронируйте автомобиль</h3>
+      <h3>Book your car</h3>
       <p>
-        Заполните контактные данные, и мы перезвоним вам для обсуждения деталей
-        и подтверждения бронирования
+        Fill in your contact details, and we’ll call you back to discuss the details
+        and confirm your reservation.
       </p>
       <div class="order-form">
-        <input type="text" placeholder="Автомобиль" required readonly id="car" formControlName="car" [class.error]="isError('car')" />
-        <input type="text" placeholder="Ваше имя" required id="name" formControlName="name" [class.error]="isError('name')" />
-        <input type="text" placeholder="Ваш телефон" required id="phone" minlength="10" formControlName="phone" [class.error]="isError('phone')" />
+        <input type="text" placeholder="Car" required readonly id="car" formControlName="car" [class.error]="isError('car')" />
+        <input type="text" placeholder="Your name" required id="name" formControlName="name" [class.error]="isError('name')" />
+        <input type="text" placeholder="Your phone number" required id="phone" minlength="10" formControlName="phone" [class.error]="isError('phone')" />
         <button class="button" type="button" id="order-action" (click)="sendOrder()" [disabled]="!orderForm.valid">
-          Забронировать
+          Book now
         </button>
       </div>
     </form>
@@ -106,6 +106,6 @@
     <div class="logo">
       <img src="images/logo.png" alt="Logo" />
     </div>
-    <div class="rights">Все права защищены</div>
+    <div class="rights">All rights reserved</div>
   </div>
 </footer>

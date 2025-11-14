@@ -33,8 +33,7 @@
             "polyfills": ["zone.js"],
             "scripts": [],
             "styles": ["src/global_styles.css"],
-            "tsConfig": "tsconfig.app.json",
-            "baseHref": "/cars/"
+            "tsConfig": "tsconfig.app.json"
           }
         },
         "serve": {

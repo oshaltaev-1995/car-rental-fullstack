@@ -1,0 +1,26 @@
+[
+  {
+    "car": "BMW Z4",
+    "name": "Oleg",
+    "phone": "555666777888",
+    "timestamp": "2025-11-13T12:32:45.823353"
+  },
+  {
+    "car": "Lamborghini Huracan Spyder Green",
+    "name": "Oleg",
+    "phone": "5558884448",
+    "timestamp": "2025-11-13T18:30:46.039530"
+  },
+  {
+    "car": "Ferrari F8 Spider",
+    "name": "Oleg",
+    "phone": "5557778889",
+    "timestamp": "2025-11-13T21:08:25.832704"
+  },
+  {
+    "car": "Mercedes SL 55 AMG",
+    "name": "Oleg",
+    "phone": "5557778887",
+    "timestamp": "2025-11-13T22:57:08.580805"
+  }
+]

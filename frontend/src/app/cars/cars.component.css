@@ -219,8 +219,11 @@
   line-height: 120%;
   letter-spacing: normal;
   color: #d4d4d4;
-  height: 100px;
+  height: auto; 
+  max-width: 520px;
+  margin-bottom: 20px;
 }
+
 
 .car-action {
   margin-top: auto;
