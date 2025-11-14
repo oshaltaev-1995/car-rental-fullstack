@@ -4,7 +4,7 @@ import os
 from datetime import datetime
 
 # Import DB helper functions
-from db import init_db, insert_order, get_all_orders
+from backend.db import init_db, insert_order, get_all_orders
 
 # Initialize SQLite database
 init_db()
