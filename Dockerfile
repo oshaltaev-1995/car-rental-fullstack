@@ -1,4 +1,4 @@
-# Build Angular frontend
+# 1. Build Angular
 FROM node:18 AS build-frontend
 WORKDIR /app
 COPY frontend/package*.json ./
@@ -6,28 +6,27 @@ RUN npm install
 COPY frontend/ .
 RUN npm run build -- --configuration production
 
-# Python + Nginx base image
+# 2. Backend + Nginx
 FROM python:3.11-slim
 
-# Install nginx
 RUN apt-get update && apt-get install -y nginx && apt-get clean
 
 WORKDIR /app
 
-# Install Python dependencies
-COPY backend/requirements.txt /app/backend/requirements.txt
-RUN pip install --no-cache-dir -r /app/backend/requirements.txt
+# Install dependencies
+COPY backend/requirements.txt ./backend/requirements.txt
+RUN pip install --no-cache-dir -r backend/requirements.txt
 
 # Copy backend
-COPY backend /app/backend
+COPY backend/ ./backend/
 
-# Copy Angular built files
+# Copy Angular build
 COPY --from=build-frontend /app/dist/demo/browser/ /var/www/html/
 
-# Nginx config
+# REPLACE default nginx config
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Start script
+# Copy startup script
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
