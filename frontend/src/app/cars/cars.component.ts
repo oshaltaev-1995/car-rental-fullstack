@@ -67,20 +67,18 @@ export class CarsComponent {
   }
 
   sendOrder() {
-    if (this.orderForm.valid) {
-      this.http
-        .post(this.orderApiUrl, this.orderForm.value)
-        .subscribe({
-          next: (response: any) => {
-            alert(response.message || 'Your order has been submitted successfully');
-            this.orderForm.reset();
-          },
-          error: (response: any) => {
-            alert(response.error?.message || 'Error submitting your order');
-          },
-        });
-    } else {
-      alert('Please fill out the form correctly before submitting.');
-    }
+  if (this.orderForm.valid) {
+    this.http.post('/api/order', this.orderForm.value).subscribe({
+      next: (response: any) => {
+        alert(response.message || 'Your order has been submitted successfully');
+        this.orderForm.reset();
+      },
+      error: (response: any) => {
+        alert(response.error?.message || 'Error submitting your order');
+      }
+    });
+  } else {
+    alert('Please fill out the form correctly before submitting.');
   }
+}
 }
