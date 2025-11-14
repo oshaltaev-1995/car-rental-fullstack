@@ -15,7 +15,7 @@ def make_order():
         return jsonify({"message": "Missing fields"}), 400
 
     # create or read orders.json
-    orders_file = "orders.json"
+    orders_file = "/tmp/orders.json"
     if os.path.exists(orders_file):
         with open(orders_file, "r", encoding="utf-8") as f:
             orders = json.load(f)
@@ -37,5 +37,6 @@ def home():
     return jsonify({"message": "Car Rental Order API is running."})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run()
+
 

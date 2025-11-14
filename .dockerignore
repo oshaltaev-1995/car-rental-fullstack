@@ -1,0 +1,8 @@
+venv
+**/venv
+backend/venv
+.git
+.gitignore
+.DS_Store
+node_modules
+frontend/node_modules

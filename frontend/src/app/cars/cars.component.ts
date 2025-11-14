@@ -13,7 +13,7 @@ export class CarsComponent {
   cars: any = [];
 
   // Backend to save orders
-  private orderApiUrl = 'http://localhost:5050/order';
+  private orderApiUrl = '/api/order';
 
   carsFilter = [
     { active: true, name: 'All cars' },
