@@ -1,41 +1,38 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-import json
-import os
+import json, os
 from datetime import datetime
 
-app = Flask(__name__)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FRONTEND_DIR = os.path.join(BASE_DIR, "..", "frontend")
+
+app = Flask(
+    __name__,
+    static_folder=FRONTEND_DIR,
+    static_url_path=""
+)
 CORS(app)
 
-@app.route("/api/order", methods=["POST"])
+# API
+@app.post("/api/order")
 def make_order():
     data = request.json
     if not data or "car" not in data or "name" not in data or "phone" not in data:
         return jsonify({"message": "Missing fields"}), 400
 
-    orders_file = "/tmp/orders.json"
-
-    if os.path.exists(orders_file):
-        with open(orders_file, "r", encoding="utf-8") as f:
-            orders = json.load(f)
-    else:
-        orders = []
-
+    path = "/tmp/orders.json"
+    orders = json.load(open(path)) if os.path.exists(path) else []
     data["timestamp"] = datetime.now().isoformat()
     orders.append(data)
-
-    with open(orders_file, "w", encoding="utf-8") as f:
-        json.dump(orders, f, ensure_ascii=False, indent=2)
+    json.dump(orders, open(path, "w"), indent=2)
 
     return jsonify({"message": "Your order has been saved!"})
 
-@app.route("/api/")
-def api_root():
-    return jsonify({"message": "API OK"})
-
-@app.route("/")
-def home():
-    return jsonify({"message": "Car Rental API is running."})
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+# SPA fallback
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve_spa(path):
+    full_path = os.path.join(FRONTEND_DIR, path)
+    if path != "" and os.path.exists(full_path):
+        return send_from_directory(FRONTEND_DIR, path)
+    return send_from_directory(FRONTEND_DIR, "index.html")
